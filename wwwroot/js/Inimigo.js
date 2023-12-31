@@ -31,7 +31,6 @@ class Inimigo {
                 this.enemies[c][r] = { x: this.enemyX, y:  this.enemyY, status: 1,movementState:this.movementState };
             }
         }
-        console.log("enemies created",this.enemies)
     }
 
     Animate(frames,sprites){
@@ -55,7 +54,6 @@ class Inimigo {
                     this.enemyY = Math.round(rows * (this.enemyHeight / 5));
                     this.enemies[columns][rows].x = this.enemyX; // Atualize a posição x
                     this.enemies[columns][rows].y = this.enemyY; // Atualize a posição y
-                    console.log("enemies curr",this.enemies,this.enemyX,this.enemyY)
                 }
             }
         }
@@ -93,7 +91,6 @@ class Inimigo {
     Drawing(sprites) {
         sprites.src = './public/Enemies/strip_saucer.png';
         const ctx = this.canvas.getContext('2d');
-
         for (let columns = 0; columns < this.enemyColumnCount; columns++) {
             for (let rows = 0; rows < this.enemyRowCount; rows++) {
                 if (this.enemies[columns][rows].status === 1) {
@@ -115,7 +112,6 @@ class Inimigo {
         // Lógica para verificar se o inimigo colidiu com o jogador
         const ColidPlayer = player.y + player.height 
         const ColidEnemy = enemy.enemyY + (enemy.enemyHeight + 16)
-        console.log(ColidEnemy,ColidPlayer,enemy.enemyY)
         if(ColidEnemy>=ColidPlayer){
             return true;
         } else {

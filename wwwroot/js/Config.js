@@ -55,7 +55,7 @@ class Configuration {
 
           Drawing(){
             this.conf.BgDraw();
-            this.conf.Player.Animate(this.conf.frames,this.conf.PLayerSPrites,this.conf.PLayerSBullet,this.conf.Inimigos);
+            this.conf.Player.Animate(this.conf.frames,this.conf.PLayerSPrites,this.conf.PLayerSBullet,this.conf.Inimigos.enemies);
             this.conf.Inimigos.Animate(this.conf.frames,this.conf.InimigoSPrites);
           },
 

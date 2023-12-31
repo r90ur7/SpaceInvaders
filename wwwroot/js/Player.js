@@ -30,7 +30,7 @@ class Player {
         this.canvas = document.querySelector('canvas');
     } 
 
-    Animate(frames,sprites,bullet) {
+    Animate(frames,sprites,bullet,enemy) {
         this.framescurr = frames
         const interval = 20
         const passinterval = frames % interval == 0
@@ -67,6 +67,7 @@ class Player {
         }
 
         this.updateAndDrawBullets(bullet);
+        this.checkBulletCollisionWithMatrix(enemy)
         this.Drawing(sprites);
         this.DrawScoore();
     }
@@ -179,6 +180,29 @@ class Player {
         // Lógica para atualizar a pontuação do jogador
         this.score += 100;
     }
+
+    checkBulletCollisionWithMatrix(matrix) {
+    for (let i = 0; i < this.bullets.length; i++) {
+        const bullet = this.bullets[i];
+        if (bullet !== undefined) {
+            for (let row = 0; row < matrix.length; row++) {
+                for (let col = 0; col < matrix[row].length; col++) {
+                    const element = matrix[row][col];
+                    // Verifica a colisão entre a bala e o elemento da matriz
+                    if (this.checkCollision(bullet, element)) {
+                        // Realize a lógica desejada quando houver colisão
+                        // Por exemplo, remova a bala da matriz ou aplique algum efeito
+                        this.bullets.splice(i, 1);
+                        matrix[row][col].status = 0;
+                        this.updateScore(); 
+                        i--; // Ajuste o índice após remover um elemento
+                        break; // Saia do loop interno, pois a bala colidiu com apenas um elemento
+                    }
+                }
+            }
+        }
+    }
+}
 
     checkCollision(rect1, rect2) {
         if(rect1 != undefined && rect2 != undefined){
