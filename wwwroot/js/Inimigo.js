@@ -62,6 +62,7 @@ class Inimigo {
     }
 
     Update(enemy){
+        this.enemyY = enemy.y
         if(enemy.movementState === "andarDireita"){
             if(enemy.x <= this.canvas.width - 55){
                 enemy.x++
@@ -112,8 +113,10 @@ class Inimigo {
     }
     Colision(player,enemy){
         // Lógica para verificar se o inimigo colidiu com o jogador
+        // console.log(player,enemy)
         const ColidPlayer = player.y + player.height 
-        const ColidEnemy = enemy.y + (enemy.height +16)
+        const ColidEnemy = enemy.enemyY + (enemy.enemyHeight + 16)
+        console.log(ColidEnemy,ColidPlayer,enemy.enemyY)
         if(ColidEnemy>=ColidPlayer){
             return true;
         } else {
