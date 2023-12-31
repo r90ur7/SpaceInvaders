@@ -113,7 +113,7 @@ class Player {
             if (this.keys['Keya'] || this.keys['KeyA'] || this.keys['ArrowLeft']) {
                 this.LeftMove(event);
             }
-            if (this.keys['Keyd'] || this.keys['KeyD'] || this.keys['ArrowRigth']) {
+            if (this.keys['Keyd'] || this.keys['KeyD'] || this.keys['ArrowRight']) {
                 this.RightMove(event);
             }
         }
