@@ -25,12 +25,14 @@ class Inimigo {
     } 
 
     createEnemies() {
+        let enemyCount = 0;
         for (let c = 0; c < this.enemyColumnCount; c++) {
             this.enemies[c] = [];
             for (let r = 0; r < this.enemyRowCount; r++) {
-                this.enemies[c][r] = { x: this.enemyX, y:  this.enemyY, status: 1,movementState:this.movementState };
+                this.enemies[c][r] = { id: enemyCount++, x: this.enemyX, y: this.enemyY, status: 1, movementState: this.movementState };
             }
         }
+        console.log("enemies",this.enemies)
     }
 
     Animate(frames,sprites){
