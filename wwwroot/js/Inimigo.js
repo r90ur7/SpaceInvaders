@@ -113,7 +113,6 @@ class Inimigo {
     }
     Colision(player,enemy){
         // Lógica para verificar se o inimigo colidiu com o jogador
-        // console.log(player,enemy)
         const ColidPlayer = player.y + player.height 
         const ColidEnemy = enemy.enemyY + (enemy.enemyHeight + 16)
         console.log(ColidEnemy,ColidPlayer,enemy.enemyY)

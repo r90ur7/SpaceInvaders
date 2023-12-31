@@ -30,7 +30,7 @@ class Player {
         this.canvas = document.querySelector('canvas');
     } 
 
-    Animate(frames,sprites,bullet,enemy) {
+    Animate(frames,sprites,bullet) {
         this.framescurr = frames
         const interval = 20
         const passinterval = frames % interval == 0
@@ -66,7 +66,7 @@ class Player {
             }
         }
 
-        this.updateAndDrawBullets(bullet,enemy);
+        this.updateAndDrawBullets(bullet);
         this.Drawing(sprites);
         this.DrawScoore();
     }
@@ -127,24 +127,12 @@ class Player {
         this.bullets.push(bullet);
     }
 
-    updateAndDrawBullets(shoot, objects) {
+    updateAndDrawBullets(shoot) {
         for (let i = 0; i < this.bullets.length; i++) {
             const bullet = this.bullets[i];
-            if(bullet != undefined){
+            if (bullet !== undefined) {
                 bullet.update();
                 bullet.draw(shoot);
-            }
-        for (let j = 0; j < objects.length; j++) {
-                const object = objects[j];
-                if (this.checkCollision(bullet, object)) {
-                    this.updateScore();
-                    this.bullets.splice(i, 1);
-                    i--;
-                    objects.splice(j, 1);
-                    break;
-                }
-            }
-        if(bullet != undefined){
                 if (bullet.offScreen()) {
                     this.bullets.splice(i, 1);
                     i--;
@@ -152,6 +140,7 @@ class Player {
             }
         }
     }
+
 
     ReleaseKey(event) {
         this.keys[event.code] = false; // Marca a tecla como solta
