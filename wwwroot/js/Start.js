@@ -4,9 +4,11 @@ const { app, BrowserWindow } = require('electron');
 let mainWindow;
 function createWindow() {
         const path = require('path');
+        const IconPath =path.join(__dirname,'./public/Icons/LogoIco.ico')
         mainWindow = new BrowserWindow({
             width: 2500, 
             height: 2500,
+            icon:IconPath,
             webPreferences: {
             nodeIntegration: true,
             contextIsolation: false

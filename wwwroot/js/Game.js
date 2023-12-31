@@ -1,5 +1,4 @@
 import Configuration from "./Config.js";
-import Player from "./Player.js";
 document.addEventListener("DOMContentLoaded",function() {
     const config = new Configuration();
     const Sound_hit = new Audio();
