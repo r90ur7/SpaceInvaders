@@ -177,7 +177,6 @@ class Player {
         }
 
     updateScore() {
-        // Lógica para atualizar a pontuação do jogador
         this.score += 100;
     }
 
@@ -188,15 +187,10 @@ class Player {
                 for (let row = 0; row < matrix.length; row++) {
                     for (let col = 0; col < matrix[row].length; col++) {
                         const element = matrix[row][col];
-                        // Verifica a colisão entre a bala e o elemento da matriz
                         if(element.status != 0){
                             if (this.checkCollision(bullet, element)) {
-                                // Realize a lógica desejada quando houver colisão
                                 element.status = 0;
-                                // this.removeElementWithId(matrix,element.id)
                                 console.log("acertou",element.id,"na matriz",matrix)
-    
-                                // matrix.splice(matrix[row][col],1)
                                 this.bullets.splice(i, 1);
                                 this.updateScore(); 
                                 i--;
@@ -208,22 +202,6 @@ class Player {
             }
         }
     }
-    removeElementWithId(matrix, id) {
-        for (let i = 0; i < matrix.length; i++) {
-            const array = matrix[i];
-            for (let j = 0; j < array.length; j++) {
-                const element = array[j];
-                if (element.id === id) {
-                    // Remove o elemento do array
-                    console.log(array)
-                    array.splice(j, 1);
-                    // Sai do loop interno, pois já encontramos e removemos o elemento
-                    break;
-                }
-            }
-        }
-    }
-
     checkCollision(rect1, rect2) {
         if(rect1 != undefined && rect2 != undefined){
             return rect1.y < rect2.y + 20
@@ -235,5 +213,4 @@ class Player {
     }
 }
 
-// Exportação da classe Player
 export default Player;

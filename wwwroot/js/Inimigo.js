@@ -9,12 +9,13 @@ class Inimigo {
         this.totalFrames = 35;
         this.enemyWidth = 128;
         this.enemyHeight = 128;
-        this.enemyRowCount = 2;
+        this.enemyRowCount = 1;
         this.enemyColumnCount = 3;
         this.RenderX = 55
         this.RenderY = 35
         this.srcX=0;
         this.srcY=0;
+        this.speed = 0.1
         this.movementState = 'andarDireita';
         this.createEnemies()
         this.moveEnemies();
@@ -65,7 +66,7 @@ class Inimigo {
         this.enemyY = enemy.y
         if(enemy.movementState === "andarDireita"){
             if(enemy.x <= this.canvas.width - 55){
-                enemy.x++
+                enemy.x += this.speed
             }else{
                 enemy.movementState = "andarEsquerda"
                 for (let columns = 0; columns < this.enemyColumnCount; columns++){
@@ -77,7 +78,7 @@ class Inimigo {
             }
         }else{
             if(enemy.x >= 0){
-                enemy.x--
+                enemy.x-= this.speed
             }else{
                 enemy.movementState = "andarDireita"
                 for (let columns = 0; columns < this.enemyColumnCount; columns++){
@@ -88,12 +89,7 @@ class Inimigo {
                 }
             }
         }
-        if (enemy.status === 0) {
-            const enemyIndex = this.enemies.flat().indexOf(enemy);
-            if (enemyIndex !== -1) {
-                this.enemies.flat().splice(enemyIndex, 1);
-            }
-        }
+        
     }
 
     Drawing(sprites) {
@@ -112,6 +108,29 @@ class Inimigo {
                         this.RenderX, this.RenderY
                     );
                     ctx.closePath();
+                    if (this.enemies.flat().filter(enemy => enemy.status === 0).length % 3 === 0) {
+                        this.speed --;
+                        if (this.speed < 1) {
+                            this.speed = 1;
+                        }
+                    }
+                }else{
+                    const allEnemiesDestroyed = this.enemies.flat().every(enemy => enemy.status === 0);
+                    if (allEnemiesDestroyed) {
+                        console.log("All enemies are destroyed")
+                        // Add your code here
+                        this.enemyRowCount+=1
+                        if(this.enemyRowCount > 3){
+                            this.enemyRowCount = 1
+                            this.enemyColumnCount+=1
+                        }
+                        if(this.enemyColumnCount > 6){
+                            this.enemyColumnCount = 3
+                            this.speed = Math.pow(this.speed, 2);
+                        }
+                        this.createEnemies()
+                        this.moveEnemies();
+                    }
                 }
             }
         }
