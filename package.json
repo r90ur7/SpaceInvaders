@@ -1,0 +1,23 @@
+{
+  "name": "spaceinvaders",
+  "version": "1.0.0",
+  "description": "",
+  "main": "wwwroot/js/Start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron wwwroot/js/Start.js",
+    "package": "electron-builder",
+    "win": "electron-builder build --win"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "build": {
+    "asar": "true",
+    "productName": "spaceinvaders"
+  },
+  "devDependencies": {
+    "electron": "^27.1.2",
+    "electron-builder": "^24.9.1"
+  }
+}
