@@ -50,7 +50,6 @@ class Configuration {
           nome: "Jogo",
           init(){
             this.conf.Player.Eventos();
-            console.log("inimigos",this.conf.Inimigos)
           },
 
           Drawing(){

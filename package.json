@@ -1,23 +1,46 @@
 {
   "name": "spaceinvaders",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Space Invaders game built with Electron",
   "main": "wwwroot/js/Start.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron wwwroot/js/Start.js",
-    "package": "electron-builder",
-    "win": "electron-builder build --win"
+    "start": "electron .",
+    "icon":"electron-icon-maker -i wwwroot/public/Icons/icon.png -o build/",
+    "build": "electron-builder build --win"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r90ur7/SpaceInvaders.git"
+  },
+  "keywords": [
+    "\"space",
+    "invaders\"",
+    "\"game\"",
+    "\"electron\""
+  ],
+  "author": "Rallenson <Rallenson900@gmail.com>",
+  "license": "MIT",
   "build": {
     "asar": "true",
-    "productName": "spaceinvaders",
-    "devDependencies": {
-    "electron": "^27.1.2",
+    "productName": "SpaceInvaders",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "icon": "../SpaceInvaders/build/icons/win/icon.ico"
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/r90ur7/SpaceInvaders/issues"
+  },
+  "homepage": "https://github.com/r90ur7/SpaceInvaders#readme",
+  "devDependencies": {
+    "electron": "^28.1.0",
     "electron-builder": "^24.9.1"
+  },
+  "dependencies": {
+    "electron-icon-maker": "^0.0.5",
+    "electron-reload": "^2.0.0-alpha.1"
   }
-}
 }

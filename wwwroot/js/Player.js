@@ -190,7 +190,6 @@ class Player {
                         if(element.status != 0){
                             if (this.checkCollision(bullet, element)) {
                                 element.status = 0;
-                                console.log("acertou",element.id,"na matriz",matrix)
                                 this.bullets.splice(i, 1);
                                 this.updateScore(); 
                                 i--;

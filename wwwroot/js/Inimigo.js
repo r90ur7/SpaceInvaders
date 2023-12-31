@@ -33,7 +33,6 @@ class Inimigo {
                 this.enemies[c][r] = { id: enemyCount++, x: this.enemyX, y: this.enemyY, status: 1, movementState: this.movementState };
             }
         }
-        console.log("enemies",this.enemies)
     }
 
     Animate(frames,sprites){
@@ -117,7 +116,6 @@ class Inimigo {
                 }else{
                     const allEnemiesDestroyed = this.enemies.flat().every(enemy => enemy.status === 0);
                     if (allEnemiesDestroyed) {
-                        console.log("All enemies are destroyed")
                         // Add your code here
                         this.enemyRowCount+=1
                         if(this.enemyRowCount > 3){
