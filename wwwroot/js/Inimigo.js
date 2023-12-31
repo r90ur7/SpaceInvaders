@@ -9,7 +9,7 @@ class Inimigo {
         this.totalFrames = 35;
         this.enemyWidth = 128;
         this.enemyHeight = 128;
-        this.enemyRowCount = 3;
+        this.enemyRowCount = 2;
         this.enemyColumnCount = 3;
         this.RenderX = 55
         this.RenderY = 35
@@ -84,6 +84,12 @@ class Inimigo {
                         this.enemies[columns][rows].movementState = "andarDireita";
                     }
                 }
+            }
+        }
+        if (enemy.status === 0) {
+            const enemyIndex = this.enemies.flat().indexOf(enemy);
+            if (enemyIndex !== -1) {
+                this.enemies.flat().splice(enemyIndex, 1);
             }
         }
     }

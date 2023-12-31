@@ -191,12 +191,12 @@ class Player {
                     // Verifica a colisão entre a bala e o elemento da matriz
                     if (this.checkCollision(bullet, element)) {
                         // Realize a lógica desejada quando houver colisão
-                        // Por exemplo, remova a bala da matriz ou aplique algum efeito
                         matrix[row][col].status = 0;
+                        // matrix.splice(matrix[row][col],1)
                         this.bullets.splice(i, 1);
                         this.updateScore(); 
-                        i--; // Ajuste o índice após remover um elemento
-                        break; // Saia do loop interno, pois a bala colidiu com apenas um elemento
+                        i--;
+                        break;
                     }
                 }
             }
